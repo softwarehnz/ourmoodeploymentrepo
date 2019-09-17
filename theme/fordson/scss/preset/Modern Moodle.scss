@@ -28,7 +28,7 @@ $cyan:    #5bc0de !default;
 
 $primary:       #447198 !default;
 $secondary:     $gray-800 !default;
-$success:       $green !default;
+$success:       $teal !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
@@ -65,6 +65,19 @@ $breadcrumb-divider-rtl: "/" !default;
 $breadcrumb-bg: $primary !default;
 $breadcrumb-bg-hover: darken($primary, 15%) !default;
 $breadcrumb-text-color: #ffffff !default;
+
+// Dropdowns
+$dropdown-bg:                       $white !default;
+$dropdown-border-color:             rgba($black, .15) !default;
+$dropdown-divider-bg:               $gray-200 !default;
+$dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
+
+$dropdown-link-color:               $gray-900 !default;
+$dropdown-link-hover-color:         darken($gray-900, 5%) !default;
+$dropdown-link-hover-bg:            $gray-200 !default;
+
+$dropdown-link-active-color:        $white !default;
+$dropdown-link-active-bg:           $gray-400 !default;
 
 // Alerts
 $alert-border-width:                0 !default;
@@ -164,4 +177,27 @@ div#learningcontent {
 .progress_bar_completed {
     background-color: $primary;
     text-align: right;
+}
+#region-main {
+    border: 0;
+    background-color: $card-bg;
+}
+
+.m-t-2.m-b-1 {
+    position: relative;
+    background-color: darken($body-bg, 10%);
+    padding: $spacer;
+    border-radius: $border-radius;
+    margin: 0!important;
+    border-top: 7px solid rgba(0,0,0,.2);
+    border-radius: 0;
+}
+
+.activity-navigation {
+    background-color: $card-bg;
+    padding: 1rem 0;
+    margin: 0 $gutterwidth;
+    border: 1px solid $gray-400;
+    border-radius: $border-radius;
+    z-index: 1;
 }

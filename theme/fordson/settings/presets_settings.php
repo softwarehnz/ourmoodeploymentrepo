@@ -64,6 +64,7 @@ $setting = new admin_setting_configstoredfile($name, $title, $description, 'pres
 array('maxfiles' => 20, 'accepted_types' => array('.scss')));
 $page->add($setting);
 
+
 // Layout Info
 $name = 'theme_fordson/layoutinfo';
 $heading = get_string('layoutinfo', 'theme_fordson');
@@ -80,7 +81,7 @@ $pagelayout2 = get_string('pagelayout2', 'theme_fordson');
 $pagelayout3 = get_string('pagelayout3', 'theme_fordson');
 $pagelayout4 = get_string('pagelayout4', 'theme_fordson');
 $pagelayout5 = get_string('pagelayout5', 'theme_fordson');
-$default = '5';
+$default = '1';
 $choices = array('1'=>$pagelayout1, '2'=>$pagelayout2, '3'=>$pagelayout3, '4'=>$pagelayout4, '5'=>$pagelayout5);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
@@ -99,7 +100,7 @@ $sectionlayout6 = get_string('sectionlayout6', 'theme_fordson');
 $sectionlayout7 = get_string('sectionlayout7', 'theme_fordson');
 $sectionlayout8 = get_string('sectionlayout8', 'theme_fordson');
 
-$default = '6';
+$default = '1';
 $choices = array('1'=>$sectionlayout1, '2'=>$sectionlayout2, '3'=>$sectionlayout3, '4'=>$sectionlayout4, '5'=>$sectionlayout5, '6'=>$sectionlayout6, '7'=>$sectionlayout7, '8'=>$sectionlayout8);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
@@ -119,13 +120,13 @@ $coursestyle7 = get_string('coursestyle7', 'theme_fordson');
 $coursestyle8 = get_string('coursestyle8', 'theme_fordson');
 $coursestyle9 = get_string('coursestyle9', 'theme_fordson');
 $coursestyle10 = get_string('coursestyle10', 'theme_fordson');
-$default = '1';
+$default = '10';
 $choices = array('1'=>$coursestyle1, '2'=>$coursestyle2, '3'=>$coursestyle3, '4'=>$coursestyle4, '5'=>$coursestyle5, '6'=>$coursestyle6, '7'=>$coursestyle7, '8'=>$coursestyle8, '9'=>$coursestyle9, '10'=>$coursestyle10);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Toggle Marketing Tile styles
+// Toggle Marketing Tile styles.
 $name = 'theme_fordson/marketingstyle';
 $title = get_string('marketingstyle' , 'theme_fordson');
 $description = get_string('marketingstyle_desc', 'theme_fordson');
@@ -133,13 +134,13 @@ $marketingstyle1 = get_string('marketingstyle1', 'theme_fordson');
 $marketingstyle2 = get_string('marketingstyle2', 'theme_fordson');
 $marketingstyle3 = get_string('marketingstyle3', 'theme_fordson');
 $marketingstyle4 = get_string('marketingstyle4', 'theme_fordson');
-$default = '1';
+$default = '3';
 $choices = array('1'=>$marketingstyle1, '2'=>$marketingstyle2, '3'=>$marketingstyle3, '4'=>$marketingstyle4);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Block Display Options
+// Block Display Options.
 $name = 'theme_fordson/blockdisplay';
 $title = get_string('blockdisplay' , 'theme_fordson');
 $description = get_string('blockdisplay_desc', 'theme_fordson');
@@ -150,6 +151,38 @@ $choices = array('1'=>$blockdisplay_on, '2'=>$blockdisplay_off);
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
+
+// Integration Info.
+$name = 'theme_fordson/integrationinfo';
+$heading = get_string('integrationinfo', 'theme_fordson');
+$information = get_string('integrationinfo_desc', 'theme_fordson');
+$setting = new admin_setting_heading($name, $heading, $information);
+$page->add($setting);
+
+// Collapsible Topic Course Format https://moodle.org/plugins/format_collapsibletopics.
+$name = 'theme_fordson/integrationcollapsibletopics';
+$title = get_string('collapsibletopics' , 'theme_fordson');
+$description = get_string('collapsibletopics_desc', 'theme_fordson');
+$integration_on = get_string('integrationon', 'theme_fordson');
+$integration_off = get_string('integrationoff', 'theme_fordson');
+$default = '2';
+$choices = array('1'=>$integration_on, '2'=>$integration_off);
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Collapsible Topic Course Format https://moodle.org/plugins/format_collapsibletopics.
+$name = 'theme_fordson/easyenrollmentintegration';
+$title = get_string('easyenrollmentintegration' , 'theme_fordson');
+$description = get_string('easyenrollmentintegration_desc', 'theme_fordson');
+$integration_on = get_string('integrationon', 'theme_fordson');
+$default = '1';
+$choices = array('1'=>$integration_on);
+$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+
 
 // Must add the page after definiting all the settings!
 $settings->add($page);

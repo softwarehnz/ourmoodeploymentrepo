@@ -113,12 +113,6 @@ span.section-modchooser-link {
     vertical-align: middle !important;
 }
 
-.m-t-2.m-b-1 {
-    background-color: $body-bg;
-    padding: 1rem;
-    border-radius: 3px;
-}
-
 .path-course-view .actions img.icon {
     width: $activityiconsize;
     height: $activityiconsize;
@@ -127,6 +121,15 @@ span.section-modchooser-link {
 .block {
     border: 1px solid $gray-400;
     border-top: 7px solid $spectrum-base;
+}
+
+.progress.fordsonsinglepage {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+li#section-0.fordsoncourseformat h3.sectionname {
+    border: 0;
 }
 
 // Single Activity fixes
@@ -201,6 +204,19 @@ span.section-modchooser-link {
     }
     .course-content ul.ctopics li.section .content .toggle, .course-content ul.ctopics li.section .content.sectionhidden {
         background-color: transparent!important;
+    }
+
+}
+
+@if $perceptionpreset == 1 {
+    $dpsaccentcolor: #c33e3e;
+    .course-content ul.topics li.section .content, .course-content ul.weeks li.section .content {
+        margin: 0;
+        padding: 0;
+    }
+    li.current h3.sectionname {
+        border-top: 10px solid $dpsaccentcolor;
+        background-color: rgba(216, 246, 255, 0.5);
     }
 
 }

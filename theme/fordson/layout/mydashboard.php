@@ -61,6 +61,7 @@ $hascourseblocks = false;
 if ($checkblocka || $checkblockb || $checkblockc) {
     $hascourseblocks = true;
 }
+$hasslideshowpages = (isset($PAGE->theme->settings->slideshowpages) && ($PAGE->theme->settings->slideshowpages == 1 || $PAGE->theme->settings->slideshowpages == 2)) !== false;
 
 $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 $templatecontext = [
@@ -80,16 +81,18 @@ $templatecontext = [
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'enrolform' => $enrolform,
+    'hasslideshowpages' => $hasslideshowpages,
 ];
 
 $PAGE->requires->jquery();
 $PAGE->requires->js('/theme/fordson/javascript/scrolltotop.js');
 $PAGE->requires->js('/theme/fordson/javascript/blockslider.js');
-$PAGE->requires->js('/theme/fordson/javascript/cardimg.js');
 if ($PAGE->theme->settings->preset != 'Spectrum-Achromatic') {
     $PAGE->requires->js('/theme/fordson/javascript/courseblock.js');
 }
 
-$templatecontext['flatnavigation'] = $PAGE->flatnav;
+$nav = $PAGE->flatnav;
+$templatecontext['flatnavigation'] = $nav;
+$templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
 echo $OUTPUT->render_from_template('theme_fordson/mydashboard', $templatecontext);
 

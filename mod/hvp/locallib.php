@@ -61,6 +61,7 @@ function hvp_get_core_settings($context) {
     $settings = array(
         'baseUrl' => $basepath,
         'url' => "{$basepath}pluginfile.php/{$context->instanceid}/mod_hvp",
+        'urlLibraries' => "{$basepath}pluginfile.php/{$systemcontext->id}/mod_hvp/libraries", // NOTE: Separate context from content URL !
         'postUserStatistics' => true,
         'ajax' => $ajaxpaths,
         'saveFreq' => $savefreq,
@@ -73,6 +74,8 @@ function hvp_get_core_settings($context) {
         'hubIsEnabled' => get_config('mod_hvp', 'hub_is_enabled') ? true : false,
         'reportingIsEnabled' => true,
         'crossorigin' => isset($CFG->mod_hvp_crossorigin) ? $CFG->mod_hvp_crossorigin : null,
+        'crossoriginRegex' => isset($CFG->mod_hvp_crossoriginRegex) ? $CFG->mod_hvp_crossoriginRegex : null,
+        'crossoriginCacheBuster' => isset($CFG->mod_hvp_crossoriginCacheBuster) ? $CFG->mod_hvp_crossoriginCacheBuster : null,
         'libraryConfig' => $core->h5pF->getLibraryConfig(),
         'pluginCacheBuster' => hvp_get_cache_buster(),
         'libraryUrl' => $basepath . 'mod/hvp/library/js'
@@ -124,8 +127,12 @@ function hvp_get_core_assets($context) {
  * Add required assets for displaying the editor.
  *
  * @param int $id Content being edited. null for creating new content
+ * @param string $mformid Id of Moodle form
+ *
+ * @throws coding_exception
+ * @throws moodle_exception
  */
-function hvp_add_editor_assets($id = null) {
+function hvp_add_editor_assets($id = null, $mformid = null) {
     global $PAGE, $CFG, $COURSE;
 
     // First we need to determine the context for permission handling.
@@ -196,7 +203,9 @@ function hvp_add_editor_assets($id = null) {
       'metadataSemantics' => $contentvalidator->getMetadataSemantics(),
       'assets' => $assets,
       // @codingStandardsIgnoreLine
-      'apiVersion' => H5PCore::$coreApi
+      'apiVersion' => H5PCore::$coreApi,
+      'language' => $language,
+      'formId' => $mformid,
     );
 
     if ($id !== null) {
